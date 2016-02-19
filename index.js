@@ -62,14 +62,14 @@ var getPlatforms = function (projectName) {
             { name : 'drawable-port-mdpi/screen.png',  width : 320, height: 480 },
             { name : 'drawable-port-hdpi/screen.png',  width : 480, height: 800 },
             { name : 'drawable-port-xhdpi/screen.png', width : 720, height: 1280 },
-        ]
+        ],
         iconPath : 'platforms/android/res/',
         icon : [
-            { name : 'drawable-ldpi/screen.png',   width : 36, height: 36 },
-            { name : 'drawable-mdpi/screen.png',   width : 48, height: 48 },
-            { name : 'drawable-hdpi/screen.png',   width : 72, height: 72 },
-            { name : 'drawable-xhdpi/screen.png',  width : 96, height: 96 },
-            { name : 'drawable-xxhdpi/screen.png', width : 144, height: 144 },
+            { name : 'drawable-ldpi/icon.png',   width : 36, height: 36 },
+            { name : 'drawable-mdpi/icon.png',   width : 48, height: 48 },
+            { name : 'drawable-hdpi/icon.png',   width : 72, height: 72 },
+            { name : 'drawable-xhdpi/icon.png',  width : 96, height: 96 },
+            { name : 'drawable-xxhdpi/icon.png', width : 144, height: 144 },
         ]
     });
     // TODO: add all platforms
@@ -352,10 +352,13 @@ display.header('Checking Project & Splash');
 
 atLeastOnePlatformFound()
     .then(validSplashExists)
+    .then(validIconExists)
     .then(configFileExists)
     .then(getProjectName)
     .then(getPlatforms)
     .then(generateSplashes)
+    .then(getProjectName)
+    .then(getPlatforms)
     .then(generateIcons)
     .catch(function (err) {
         if (err) {
